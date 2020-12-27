@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "home-outline",
+    "name": "Home",
+    "redirectTo": "/home"
+  },
+  {
+    "icon": "skull-outline",
+    "name": "Thriller",
+    "redirectTo": "/thriller"
+  },
+  {
+    "icon": "sad-outline",
+    "name": "Drama",
+    "redirectTo": "/drama"
+  },
+  {
+    "icon": "planet-outline",
+    "name": "Sci-fi",
+    "redirectTo": "/scifi"
+  }
+]

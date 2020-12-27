@@ -1,0 +1,22 @@
+<ion-header class="ion-border">
+  <ion-toolbar color="dark">
+    <!-- Botón de Flecha atrás -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <!-- Titulo definido en cabecera.component.ts como @Input -->
+    <ion-title class="ion-text-center ion-text-capitalize">{{ titulo }}</ion-title>
+    <!-- Botón central con el logo de la App en el centro -->
+    <ion-buttons class="ion-justify-content-center">
+      <ion-button routerLink="/">
+        <ion-avatar>
+          <ion-img src="/assets/imagenes/netflixicon.png"></ion-img>
+        </ion-avatar>
+      </ion-button>
+    </ion-buttons>
+    <!-- Botón del menú a la derecha -->
+    <ion-buttons slot="end">
+      <ion-menu-button menu="primerMenu" color="light"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

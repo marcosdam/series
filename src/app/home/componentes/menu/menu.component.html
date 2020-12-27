@@ -1,0 +1,25 @@
+<!-- menuid para relacionar este menú con el botón que abre el menú -->
+<!-- el botón ion-menu-button de inicio-->
+<!-- contentId busca el id principal para añadir este menú -->
+<!-- Lo añado al router-outlet de app-component.html para cargarlo en todas las páginas -->
+
+<ion-menu side="end" menu-id="primerMenu" contentId="principal">
+
+  <ion-header>
+    <ion-toolbar color="dark">
+      <ion-title>Menú lateral</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Bucle para rellenar elementos del menú -->
+  <ion-content>
+    <ion-menu-toggle *ngFor="let elemento of elementos | async">
+      <ion-list>
+        <ion-item [routerLink]="elemento.redirectTo" detail>
+          <ion-icon color="primary" slot="start" [name]="elemento.icon"></ion-icon>
+          <ion-label>{{ elemento.name }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-menu-toggle>
+  </ion-content>
+
+</ion-menu>
