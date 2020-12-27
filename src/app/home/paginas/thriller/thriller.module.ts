@@ -10,13 +10,13 @@ import { ThrillerPage } from './thriller.page';
 import {ComponentesModule} from '../../componentes/componentes.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        ThrillerPageRoutingModule,
-        ComponentesModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    ThrillerPageRoutingModule,
+    ComponentesModule
+  ],
   declarations: [ThrillerPage]
 })
 export class ThrillerPageModule {}

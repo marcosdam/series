@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: 'thriller',
     loadChildren: () => import('./paginas/thriller/thriller.module').then( m => m.ThrillerPageModule)
-  }
+  },
 ];
 
 @NgModule({

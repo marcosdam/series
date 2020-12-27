@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
   // Definir array de elementos (objeto Elemento en interfaces.ts)
   elementos: Observable<Elemento[]>;
 
-  // Inyectar el servicio (datos.servoce.ts) en el constructor
+  // Inyectar el servicio (datos.service.ts) en el constructor para usar su función getMenuOpciones
   constructor(private datosService: DatosService) { }
 
   // Iniciar elementos con la función getMenuOpciones de datos.service.ts

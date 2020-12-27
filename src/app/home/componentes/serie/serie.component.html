@@ -1,0 +1,34 @@
+<app-cabecera></app-cabecera>
+
+<ion-content>
+    <!-- Lista de todas las series ??? Hacer un .json por cada categoría?-->
+    <ion-list>
+        <ion-item *ngFor="let serie of series | async">
+          <ion-slides>
+            <ion-slide>
+              <ion-img [routerLink]="serie.imagen1"></ion-img>
+            </ion-slide>
+            <ion-slide>
+              <ion-img [routerLink]="serie.imagen2"></ion-img>
+            </ion-slide>
+            <ion-slide>
+              <ion-img [routerLink]="serie.imagen3"></ion-img>
+            </ion-slide>
+          </ion-slides>
+
+          <ion-title>{{serie.titulo}}</ion-title>
+
+          <ion-label>{{serie.categorias}}</ion-label>
+
+          <ion-label>{{serie.numCapitulos}}</ion-label>
+
+          <ion-label>{{serie.anyoEmision}}</ion-label>
+
+          <ion-label>{{serie.sinopsis}}</ion-label>
+
+          <ion-badge>{{serie.puntuacion}} </ion-badge>
+
+        </ion-item>
+    </ion-list>
+
+</ion-content>
