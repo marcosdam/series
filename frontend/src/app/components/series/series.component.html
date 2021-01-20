@@ -1,0 +1,109 @@
+<!-- CUANDO TOD0 FUNCIONE CAMBIAR LA ESTÉTICA -->
+<div class="container">
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-title">
+          <h3 class="center blue-text">Nueva Serie</h3>
+        </div>
+        <div class="card-content">
+          <!-- Formulario para añadir series -->
+          <form #serieForm="ngForm" (ngSubmit)="addSerie(serieService.selectedSerie, serieForm)">
+            <!-- Guardar ID de manera oculta cuando editemos un elemento -->
+            <input type="hidden" name="id" #id="ngModel" [(ngModel)]="serieService.selectedSerie.id"/>
+            <div class="row">
+              <div class="input-field col s12">
+                <!-- IMAGEN 1 -->
+                <input type="text" name="imagen1" #imagen1="ngModel"
+                       [(ngModel)]="serieService.selectedSerie.imagen1"
+                       placeholder="Añadir Link imágen 1"/>
+                <!-- IMAGEN 2 -->
+                <input type="text" name="imagen2" #imagen2="ngModel"
+                       [(ngModel)]="serieService.selectedSerie.imagen2"
+                       placeholder="Añadir Link imágen 2"/>
+                <!-- IMAGEN 3 -->
+                <input type="text" name="imagen3" #imagen3="ngModel"
+                       [(ngModel)]="serieService.selectedSerie.imagen3"
+                       placeholder="Añadir Link imágen 3"/>
+                <!-- TITULO -->
+                <input type="text" name="titulo" #titulo="ngModel"
+                       [(ngModel)]="serieService.selectedSerie.titulo"
+                       placeholder="Añadir título"/>
+
+                <!-- CATEGORÍAS -->
+                <div class="row">
+                  <div class="col s10">
+                    <label>
+                      <input type="text" name="categoria" #categoria="ngModel"
+                             [(ngModel)]="myCategoria" placeholder="Añadir categoría"/>
+                      <p><b>Categorías: </b>
+                        <span *ngFor="let c of serieService.selectedSerie.categorias">
+                        {{ c }}, </span></p>
+                    </label>
+                  </div>
+                  <!-- Botón para añadir CATEGORÍA a la lista de series -->
+                  <div class="col s2">
+                    <span class="btn" (click)="addCategoria()">+</span>
+                  </div>
+                </div>
+                <!-- FIN Añadir categoría -->
+
+                <!-- NUMCAPITULOS -->
+                <input type="number" name="numcapitulos" #numcapitulos="ngModel"
+                       [(ngModel)]="serieService.selectedSerie.numCapitulos"
+                       placeholder="Añadir Número de capítulos"/>
+                <!-- FIN NUMCAPITULOS-->
+
+                <!-- ANYOEMISION -->
+                <input type="number" name="anyoemision" #anyoemision="ngModel"
+                       [(ngModel)]="serieService.selectedSerie.anyoEmision"
+                       placeholder="Añadir Año de emisión"/>
+                <!-- FIN ANYOEMISION -->
+
+                <!-- SINOPSIS -->
+                <input type="text" name="sinopsis" #sinopsis="ngModel"
+                       [(ngModel)]="serieService.selectedSerie.sinopsis"
+                       placeholder="Añadir Sinopsis"/>
+                <!-- FIN SINOPSIS -->
+
+                <!-- PUNTUACION -->
+                <input type="number" name="puntuacion" #puntuacion="ngModel"
+                       [(ngModel)]="serieService.selectedSerie.puntuacion"
+                       placeholder="Añadir Puntuación"/>
+                <!-- FIN PUNTUACION -->
+
+
+                <!-- BOTÓNES LIMPIAR & GUARDAR -->
+                <div class="card-action">
+                  <div class="input-field col s12">
+                    <button class="btn right" (click)="resetForm(serieForm)">Limpiar</button>
+                    <button type="submit" class="btn right">Guardar</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 right-align">
+      <!-- RECORRER LISTA SERIES -->
+      <h3 class="center blue-text">Lista de Series</h3>
+      <ul>
+        <li *ngFor="let serie of serieService.series">
+          <h5>{{ serie.titulo }}
+            <!-- BTN EDITAR -->
+            <a class="cursor" (click)="editSerie(serie)">
+              <i class="material-icons">edit</i>
+            </a>
+            <!-- BTN BORRAR -->
+            <a class="cursor" (click)="deleteSerie(serie.id)">
+              <i class="material-icons">delete</i>
+            </a>
+          </h5>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
