@@ -1,1 +1,45 @@
 <app-cabecera></app-cabecera>
+
+<!-- Recorrer lista de series y cargarlas en cards (GETSERIES) -->
+<ion-content>
+    <!-- Lista -->
+    <ion-list>
+        <ion-card *ngFor="let serie of series | async">
+            <!-- Añadir *ngIf para ordenar por más recientes (anyoEmision) -->
+            <ion-card-header>
+                <ion-slides pager="true">
+                    <ion-slide>
+                        <ion-img [src]="serie.imagen1" class="card-img-top"></ion-img>
+                    </ion-slide>
+                    <ion-slide>
+                        <ion-img [src]="serie.imagen2" class="card-img-top"></ion-img>
+                    </ion-slide>
+                    <ion-slide>
+                        <ion-img [src]="serie.imagen3" class="card-img-top"></ion-img>
+                    </ion-slide>
+                </ion-slides>
+            </ion-card-header>
+
+            <ion-card-title>
+                <ion-title>
+                    {{serie.titulo}}
+                </ion-title>
+            </ion-card-title>
+
+            <ion-card-content>
+                <br>
+                <ion-label>Categorías: {{serie.categorias}}</ion-label>
+                <br>
+                <ion-label>Número de capítulos: {{serie.numCapitulos}}</ion-label>
+                <br>
+                <ion-label>Año de emisión: {{serie.anyoEmision}}</ion-label>
+                <br>
+                <ion-label>Sinopsis: {{serie.sinopsis}}</ion-label>
+                <br>
+                <ion-badge>Puntuación: {{serie.puntuacion}} </ion-badge>
+            </ion-card-content>
+
+        </ion-card>
+    </ion-list>
+    <!-- FIN Lista -->
+</ion-content>

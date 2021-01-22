@@ -18,6 +18,7 @@ export class SerieComponent implements OnInit {
 
   // Iniciar elementos con la función getSerieses de datos.service.ts
   ngOnInit() {
+    // @ts-ignore
     this.series = this.datosService.getSeries();
   }
 
