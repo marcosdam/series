@@ -8,17 +8,9 @@ const routes: Routes = [
     component: HomePage,
   },
   {
-    path: 'drama',
-    loadChildren: () => import('./paginas/drama/drama.module').then( m => m.DramaPageModule)
-  },
-  {
-    path: 'scifi',
-    loadChildren: () => import('./paginas/scifi/scifi.module').then( m => m.ScifiPageModule)
-  },
-  {
-    path: 'thriller',
-    loadChildren: () => import('./paginas/thriller/thriller.module').then( m => m.ThrillerPageModule)
-  },
+    path: 'categoria',
+    loadChildren: () => import('./paginas/categoria/categoria.module').then(m => m.CategoriaPageModule)
+  }
 ];
 
 @NgModule({

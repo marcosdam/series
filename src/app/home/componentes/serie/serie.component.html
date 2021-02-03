@@ -1,31 +1,72 @@
 <app-cabecera></app-cabecera>
-<!-- MODIFICAR CUANDO HOME.PAGE.HTML CARGUE TODAS LAS SERIES-->
-<ion-content>
-    <!-- SERIE SELECCIONADA -> OBTENIDA DE LA API (getOneSerie) -->
-    <ion-item>
-        <ion-slides>
-            <ion-slide>
-                <img [routerLink]="serie.imagen1">
-            </ion-slide>
-            <ion-slide>
-                <img [routerLink]="serie.imagen2">
-            </ion-slide>
-            <ion-slide>
-                <img [routerLink]="serie.imagen3">
-            </ion-slide>
-        </ion-slides>
 
-        <ion-title>{{serie.titulo}}</ion-title>
+<!-- Obtener la serie seleccionada en Home (GET ONE SERIES) -->
+<ion-content bg-color="red">
+        <ion-card>
+            <!-- Slides en el header de la card -->
+            <ion-card-header>
+                <ion-slides pager="true">
+                    <ion-slide>
+                        <img [src]="serie.imagen1" class="card-img-top">
+                    </ion-slide>
+                    <ion-slide>
+                        <img [src]="serie.imagen2" class="card-img-top">
+                    </ion-slide>
+                    <ion-slide>
+                        <img [src]="serie.imagen3" class="card-img-top">
+                    </ion-slide>
+                </ion-slides>
+            </ion-card-header>
+            <!-- Título Serie -->
+            <ion-card-title>
+                <ion-title>
+                    {{serie.titulo}}
+                </ion-title>
+            </ion-card-title>
+            <!-- Resto de atributos -->
+            <ion-card-content>
+                <br>
+                <ion-label>Categorías: {{serie.categorias}}</ion-label>
+                <br>
+                <ion-label>Número de capítulos: {{serie.numCapitulos}}</ion-label>
+                <br>
+                <ion-label>Año de emisión: {{serie.anyoEmision}}</ion-label>
+                <br>
+                <ion-label>Sinopsis: {{serie.sinopsis}}</ion-label>
+                <br>
+                <ion-badge>Puntuación: {{serie.puntuaciones}} </ion-badge>  <!-- Mostrar la media -->
+            </ion-card-content>
 
-        <ion-label>{{serie.categorias}}</ion-label>
+            <!-- FORM PARA PUNTUAR SERIE (EMAIL Y NOTA) -->
+            <!-- Tiene que añadir email y nota al objeto puntuación y meter el objeto en la lista de puntuaciones de la serie -->
+            <form #puntuacionForm (ngSubmit)="addPuntuacion(datosService.selectedSerie, puntuacionForm)">
 
-        <ion-label>{{serie.numCapitulos}}</ion-label>
+                <ion-card>
+                    <ion-card-header>¿Ya has visto esta serie? ¡Puntúala!</ion-card-header>
 
-        <ion-label>{{serie.anyoEmision}}</ion-label>
+                    <ion-card-subtitle>
+                        <ion-item>
+                            <input type="email" name="email" #email="ngModel"
+                                   [(ngModel)]="puntuacion.email" placeholder="Introduce un email válido para poder votar"
+                                   required pattern="^([a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" />
 
-        <ion-label>{{serie.sinopsis}}</ion-label>
+                            <ion-button class="btn btn-primary" (click)="addPuntuacion()">Votar</ion-button>
+                        </ion-item>
+                    </ion-card-subtitle>
 
-        <ion-badge>{{serie.puntuacion}} </ion-badge>
+                    <ion-card-subtitle>
+                        <ion-item>
 
-    </ion-item>
+                            <ion-range (ionChange)="cambiarRango($event)"
+                                       name="nota" #nota="ngModel" [(ngModel)]="puntuacion.nota"
+                                       pin="true" snaps="true" ticks="true" min="1" max="10" color="primary" step="1" >
+                                <ion-label slot="start">1</ion-label>
+                                <ion-label slot="end">10</ion-label>
+                            </ion-range>
+                        </ion-item>
+                    </ion-card-subtitle>
+                </ion-card>
+            </form>
+            <!-- FIN FORM -->
+        </ion-card>
 </ion-content>

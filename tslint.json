@@ -114,6 +114,7 @@
     },
     "variable-name": {
       "options": [
+        "allow-leading-underscore",
         "ban-keywords",
         "check-format",
         "allow-pascal-case"
@@ -129,6 +130,7 @@
         "check-typecast"
       ]
     },
+    "no-trailing-whitespace": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,

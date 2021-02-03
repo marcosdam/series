@@ -1,19 +1,25 @@
-import {Component} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {DatosService} from '../servicios/datos.service';
 import {Serie} from '../../../../frontend/src/app/models/serie';
 import {Observable} from 'rxjs';
+import {IonInfiniteScroll} from '@ionic/angular';
 
 @Component({
     selector: 'app-home',
     templateUrl: 'home.page.html',
     styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
+
     series?: Observable<Serie>;
 
     constructor(datosService: DatosService) {
         // @ts-ignore
-        this.series = datosService.getSeries();
+        this.series = datosService.getSeries();     // Todas las series en home
+    }
+
+    ngOnInit() {
+
     }
 
 }

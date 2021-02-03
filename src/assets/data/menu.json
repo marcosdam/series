@@ -7,16 +7,16 @@
   {
     "icon": "skull-outline",
     "name": "Thriller",
-    "redirectTo": "/thriller"
+    "redirectTo": "/categorias"
   },
   {
     "icon": "sad-outline",
     "name": "Drama",
-    "redirectTo": "/drama"
+    "redirectTo": "/categorias"
   },
   {
     "icon": "planet-outline",
     "name": "Sci-fi",
-    "redirectTo": "/scifi"
+    "redirectTo": "/categorias"
   }
 ]

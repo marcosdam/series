@@ -2,22 +2,15 @@
 
 <!-- Recorrer lista de series y cargarlas en cards (GETSERIES) -->
 <ion-content>
+    <!-- AQUÍ EN HOME (y categorías) SOLO DEBE APARECER 1 IMÁGEN, TÍTULO Y CATEGORÍAS
+            EN serie(singular) APARECERÁ TOD0 (todos los atributos)-->
+
     <!-- Lista -->
     <ion-list>
-        <ion-card *ngFor="let serie of series | async">
+        <ion-card *ngFor="let serie of series | async" [routerLink]="['/serie/', serie._id]">
             <!-- Añadir *ngIf para ordenar por más recientes (anyoEmision) -->
             <ion-card-header>
-                <ion-slides pager="true">
-                    <ion-slide>
-                        <ion-img [src]="serie.imagen1" class="card-img-top"></ion-img>
-                    </ion-slide>
-                    <ion-slide>
-                        <ion-img [src]="serie.imagen2" class="card-img-top"></ion-img>
-                    </ion-slide>
-                    <ion-slide>
-                        <ion-img [src]="serie.imagen3" class="card-img-top"></ion-img>
-                    </ion-slide>
-                </ion-slides>
+                <ion-img [src]="serie.imagen1" class="card-img-top"></ion-img>
             </ion-card-header>
 
             <ion-card-title>
@@ -30,16 +23,19 @@
                 <br>
                 <ion-label>Categorías: {{serie.categorias}}</ion-label>
                 <br>
-                <ion-label>Número de capítulos: {{serie.numCapitulos}}</ion-label>
-                <br>
-                <ion-label>Año de emisión: {{serie.anyoEmision}}</ion-label>
-                <br>
-                <ion-label>Sinopsis: {{serie.sinopsis}}</ion-label>
-                <br>
-                <ion-badge>Puntuación: {{serie.puntuacion}} </ion-badge>
             </ion-card-content>
 
         </ion-card>
     </ion-list>
     <!-- FIN Lista -->
+
+
+    <!-- En todas las páginas donde aparezcan diferentes series deberán cargarse
+    inicialmente 4 y al bajar el usuario se cargarán más series con un infinite scroll -->
+
+    <!-- Infinite Scroll (cuando el usr esté a 150px de llegar al fin de la página, cargará el infinite)-->
+  <!--   <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    -->
 </ion-content>

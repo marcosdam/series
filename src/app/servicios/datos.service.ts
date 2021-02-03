@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Elemento} from '../interfaces/interfaces';
-import {Serie} from '../../../../frontend/src/app/models/serie';
+import {Serie} from '../interfaces/serie';
+import {map} from "rxjs/operators";
+import {compareNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
 
 @Injectable({
   providedIn: 'root'
@@ -25,13 +27,37 @@ export class DatosService {
     return this.http.get<Elemento[]>('/assets/data/menu.json');
   }
 
-  // Función para obtener la lista de series de serie.json
-  /*getSeries(){
-    return this.http.get<Serie[]>('/assets/data/serie.json');
-  }*/
-
   // Func para obtener series con GET (Petición HTTP)
   getSeries(){
-    return this.http.get(this.API_SERIES);
+    return this.http.get<Serie[]>(this.API_SERIES);
+  }
+
+  /*
+  getSeriesPorFecha(){
+    return this.http.get(this.API_SERIES).pipe(
+        map(this.series.sort(
+            (s1: Serie, s2: Serie) =>
+                compareNumbers(s1.anyoEmision, s2.anyoEmision))
+        )
+    );
+  }
+  */
+
+  // Func para obtener una sola seria mediante su _id
+  getOneSerie(_id: string){
+    return this.http.get(this.API_SERIES + `/${_id}`);
+  }
+
+  //
+  putSerie(serie: Serie){
+    return this.http.put(this.API_SERIES + `/${serie._id}`, serie);
+  }
+
+  // Obtener lista de puntuaciones
+  getPuntuaciones(_id: string){}
+
+  // Obtener la media de puntuaciones y mostrarla en el badge
+  getPuntuacionMedia(_id: string){
+
   }
 }

@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ScifiPageRoutingModule } from './scifi-routing.module';
+import { CategoriaRoutingModule } from './categoria-routing.module';
 
-import { ScifiPage } from './scifi.page';
+import { CategoriaPage } from './categoria.page';
 import {ComponentesModule} from '../../componentes/componentes.module';
 
 @NgModule({
@@ -14,9 +14,9 @@ import {ComponentesModule} from '../../componentes/componentes.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ScifiPageRoutingModule,
+    CategoriaRoutingModule,
     ComponentesModule
   ],
-  declarations: [ScifiPage]
+  declarations: [CategoriaPage]
 })
-export class ScifiPageModule {}
+export class CategoriaPageModule {}
