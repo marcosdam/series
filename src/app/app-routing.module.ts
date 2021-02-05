@@ -20,9 +20,8 @@ const routes: Routes = [
   },
 
   // CATEGORÍA
-  //
   {
-    path: 'serie/categorias/:cat',
+    path: 'categorias/:cat',
     // component: SerieComponent
     loadChildren: () => import('./home/paginas/categoria/categoria.module').then(m => m.CategoriaPageModule)
   },

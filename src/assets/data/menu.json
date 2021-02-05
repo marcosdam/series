@@ -7,21 +7,21 @@
   {
     "icon": "skull-outline",
     "name": "Thriller",
-    "redirectTo": "/categorias"
+    "redirectTo": "/categorias/thriller"
   },
   {
     "icon": "sad-outline",
     "name": "Drama",
-    "redirectTo": "/categorias"
+    "redirectTo": "/categorias/drama"
   },
   {
     "icon": "planet-outline",
     "name": "Sci-fi",
-    "redirectTo": "/categorias"
+    "redirectTo": "/categorias/sci-fi"
   },
   {
     "icon": "code-slash-outline",
     "name": "Informática",
-    "redirectTo": "/categorias"
+    "redirectTo": "/categorias/informatica"
   }
 ]

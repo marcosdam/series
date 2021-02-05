@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Serie} from '../../../interfaces/serie';
 import {DatosService} from '../../../servicios/datos.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NgForm} from '@angular/forms';
-import {ToastController} from '@ionic/angular';
+import {AlertController, ToastController} from '@ionic/angular';
 
 // Var para utilizar Materialize
 declare var M: any;
@@ -13,7 +13,7 @@ declare var M: any;
     templateUrl: './serie.component.html',
     styleUrls: ['./serie.component.scss'],
 })
-export class SerieComponent implements OnInit {
+export class SerieComponent implements OnInit, AfterViewInit {
     // Serie
     serie: Serie = {
         _id: '',
@@ -37,11 +37,11 @@ export class SerieComponent implements OnInit {
 
     // Media para actualizar
     suma = 0;
-    media;
+    media = this.getPuntuacionMedia(this.serie);
     notas = [];
 
     // Inyectar datosService(contiene getOneSrie), Router y ActivatedRoute (coger los parámetros de la url -> donde pasamos el id),
-    // y el ToastController de ionic
+    // el ToastController de ionic y el AlertController para votar
     constructor(public datosService: DatosService, private router: Router, private activatedRoute: ActivatedRoute,
                 private toastController: ToastController) {
     }
@@ -60,6 +60,12 @@ export class SerieComponent implements OnInit {
         }
     }
 
+    //
+    ngAfterViewInit() {
+        this.getPuntuacionMedia(this.serie);
+        console.log('MEDIA:', this.media);
+    }
+
     // Toast (de ionic)
     async presentToast() {
         const toast = await this.toastController.create({
@@ -70,14 +76,16 @@ export class SerieComponent implements OnInit {
     }
 
     // Obtener la media de puntuaciones y mostrarla en el badge
-    getPuntuacionMedia(serie) {
+    getPuntuacionMedia(serie): number {
         // Suma las notas y divide entre tamaño de puntuaciones
         serie.puntuaciones.forEach( punt => {
             this.suma = this.suma + punt.nota;
-            this.media = this.suma / serie.puntuaciones.length;
-            this.media = Math.round((this.media + Number.EPSILON) * 100) / 100;     // Para redondear a solo 2 decimales
         });
+        this.media = this.suma / serie.puntuaciones.length;
+        this.media = Math.round((this.media + Number.EPSILON) * 100) / 100;     // Para redondear a solo 2 decimales
         console.log('Nota media : ', this.media);
+
+        return this.media;
     }
 
 
@@ -104,4 +112,5 @@ export class SerieComponent implements OnInit {
             puntuacionForm.reset();
         }
     }
+
 }

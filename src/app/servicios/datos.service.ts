@@ -12,6 +12,7 @@ export class DatosService {
   // Serie y lista de series (IMPORTAR serie.ts de models de /frontend
   selectedSerie: Serie;
   series: Serie[];
+  cat: '';
 
   // URL de la API
   readonly API_SERIES = 'http://localhost:3000/api/series';
@@ -32,17 +33,6 @@ export class DatosService {
     return this.http.get<Serie[]>(this.API_SERIES);
   }
 
-  /*
-  getSeriesPorFecha(){
-    return this.http.get(this.API_SERIES).pipe(
-        map(this.series.sort(
-            (s1: Serie, s2: Serie) =>
-                compareNumbers(s1.anyoEmision, s2.anyoEmision))
-        )
-    );
-  }
-  */
-
   // Func para obtener una sola seria mediante su _id
   getOneSerie(_id: string){
     return this.http.get(this.API_SERIES + `/${_id}`);
@@ -53,15 +43,27 @@ export class DatosService {
     return this.http.put(this.API_SERIES + `/${serie._id}`, serie);
   }
 
-  // Obtener lista de puntuaciones
-  // getPuntuaciones(_id: string){}
 
   // GET CATEGORIA (consulta Mongo where... )
-  // db.APISeriesMongoose.find( { categorias: ["thriller"] } )
-  // db.APISeriesMongoose.find( { categorias: ["drama"] } )
-  // db.APISeriesMongoose.find( { categorias: ["sci-fi"] } )
-  getOneCategoria(cat: string){
-    return this.http.get<Serie[]>(this.API_SERIES + `/${cat}`);
+  // db.APISeriesMongoose.find( { categorias: ["Thriller"] } )
+  // db.APISeriesMongoose.find( { categorias: ["Drama"] } )
+  // db.APISeriesMongoose.find( { categorias: ["Sci-fi"] } )
+  // db.APISeriesMongoose.find( { categorias: ["Informática"] } )
+
+  getSeriesPorCategoria(cat: string){       // Debe ser el pulsado en el menú lateral
+    return this.http.get(this.API_SERIES + `/categorias/` + this.cat);
   }
+
+
+  /*
+  getSeriesPorFecha(){
+    return this.http.get(this.API_SERIES).pipe(
+        map(this.series.sort(
+            (s1: Serie, s2: Serie) =>
+                compareNumbers(s1.anyoEmision, s2.anyoEmision))
+        )
+    );
+  }
+  */
 
 }
