@@ -6,12 +6,10 @@
             <!-- Slides en el header de la card -->
             <ion-card-header>
                 <ion-slides pager="true">
-
+                    <!-- Slide por cada imágen -->
                     <ion-slide *ngFor="let imagen of serie.imagenes">
                         <img [src]="imagen" class="card-img-top">
                     </ion-slide>
-
-
                 </ion-slides>
             </ion-card-header>
             <!-- Título Serie -->
@@ -69,4 +67,47 @@
             </form>
             <!-- FIN FORM -->
         </ion-card>
+
+
+    <!-- FAB con redes sociales (floating action button)-->
+    <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+        <!-- Botón y posición -->
+        <ion-fab-button>
+            <ion-icon name="Add">
+            </ion-icon>
+        </ion-fab-button>
+        <!-- Lista de 3 botones que se abrirá al pulsar el botón del fab y
+        (hacia donde va a desplegarse) 1 hacia arriba y otra hacia la izquierda -->
+        <ion-fab-list side="top">
+            <!-- Botón Facebook -->
+            <ion-fab-button color="facebook">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </ion-fab-button>
+            <!-- Botón Youtube -->
+            <ion-fab-button color="youtube">
+                <ion-icon name="logo-youtube"></ion-icon>
+            </ion-fab-button>
+            <!-- Botón Twitter -->
+            <ion-fab-button color="twitter">
+                <ion-icon name="logo-twitter"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+
+        <!-- Lista de FABS en horizontal -->
+        <ion-fab-list side="start">
+            <!-- Botón Vimeo -->
+            <ion-fab-button color="vimeo">
+                <ion-icon name="logo-vimeo"></ion-icon>
+            </ion-fab-button>
+            <!-- Botón Google -->
+            <ion-fab-button color="google">
+                <ion-icon name="logo-google"></ion-icon>
+            </ion-fab-button>
+            <!-- Botón Github -->
+            <ion-fab-button color="github">
+                <ion-icon name="logo-github"></ion-icon>
+            </ion-fab-button>
+        </ion-fab-list>
+    </ion-fab>
+
 </ion-content>
