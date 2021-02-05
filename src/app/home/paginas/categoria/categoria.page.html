@@ -1,6 +1,42 @@
 <app-cabecera></app-cabecera>
 
-<ion-content>
-    <!-- Cargar series según la categoría pulsada en el menú lateral -->
+<!-- Cargar series según la categoría pulsada en el menú lateral -->
+<!-- Obtener la serie seleccionada en Home (GET ONE SERIES) -->
+<ion-content bg-color="red">
+    <!-- AQUÍ Y EN HOME (y categorías) SOLO DEBE APARECER 1 IMÁGEN, TÍTULO Y CATEGORÍAS
+            EN serie(singular) APARECERÁ TOD0 (todos los atributos)-->
 
+    <!-- Lista -->
+    <ion-list>
+        <ion-card *ngFor="let serie of series" [routerLink]="['/serie/', serie._id]">
+            <!-- Añadir *ngIf para ordenar por más recientes (anyoEmision) -->
+            <ion-card-header>
+                <ion-img [src]="serie.imagenes[0]" class="card-img-top"></ion-img>
+            </ion-card-header>
+
+            <ion-card-title>
+                <ion-title>
+                    {{serie.titulo}}
+                </ion-title>
+            </ion-card-title>
+
+            <ion-card-content>
+                <br>
+                <ion-label>Categorías: {{serie.categorias}}</ion-label>
+                <br>
+            </ion-card-content>
+
+        </ion-card>
+    </ion-list>
+    <!-- FIN Lista -->
+
+
+    <!-- En todas las páginas donde aparezcan diferentes series deberán cargarse
+    inicialmente 4 y al bajar el usuario se cargarán más series con un infinite scroll -->
+
+    <!-- Infinite Scroll (cuando el usr esté a 150px de llegar al fin de la página, cargará el infinite)-->
+    <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
+

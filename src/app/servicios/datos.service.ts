@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Elemento} from '../interfaces/interfaces';
 import {Serie} from '../interfaces/serie';
-import {map} from "rxjs/operators";
-import {compareNumbers} from "@angular/compiler-cli/src/diagnostics/typescript_version";
+import {map} from 'rxjs/operators';
+import {compareNumbers} from '@angular/compiler-cli/src/diagnostics/typescript_version';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,6 @@ export class DatosService {
   // Serie y lista de series (IMPORTAR serie.ts de models de /frontend
   selectedSerie: Serie;
   series: Serie[];
-  cat: '';
 
   // URL de la API
   readonly API_SERIES = 'http://localhost:3000/api/series';
@@ -51,7 +50,7 @@ export class DatosService {
   // db.APISeriesMongoose.find( { categorias: ["Informática"] } )
 
   getSeriesPorCategoria(cat: string){       // Debe ser el pulsado en el menú lateral
-    return this.http.get(this.API_SERIES + `/categorias/` + this.cat);
+    return this.http.get(`${this.API_SERIES}/categorias/${cat}`);
   }
 
 
