@@ -54,10 +54,14 @@ export class DatosService {
   }
 
   // Obtener lista de puntuaciones
-  getPuntuaciones(_id: string){}
+  // getPuntuaciones(_id: string){}
 
-  // Obtener la media de puntuaciones y mostrarla en el badge
-  getPuntuacionMedia(_id: string){
-
+  // GET CATEGORIA (consulta Mongo where... )
+  // db.APISeriesMongoose.find( { categorias: ["thriller"] } )
+  // db.APISeriesMongoose.find( { categorias: ["drama"] } )
+  // db.APISeriesMongoose.find( { categorias: ["sci-fi"] } )
+  getOneCategoria(cat: string){
+    return this.http.get<Serie[]>(this.API_SERIES + `/${cat}`);
   }
+
 }

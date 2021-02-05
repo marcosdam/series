@@ -2,9 +2,7 @@ export class Serie {
 
     constructor() {
         this._id = '';
-        this.imagen1 = '';
-        this.imagen2 = '';
-        this.imagen3 = '';
+        this.imagenes = [''];
         this.titulo = '';
         this.categorias = [''];
         this.numCapitulos = null;
@@ -14,9 +12,7 @@ export class Serie {
     }
 
     _id: string;
-    imagen1: string;
-    imagen2: string;
-    imagen3: string;
+    imagenes: [string];
     titulo: string;
     categorias: [string];
     numCapitulos: number;

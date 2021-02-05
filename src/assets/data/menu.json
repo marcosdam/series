@@ -18,5 +18,10 @@
     "icon": "planet-outline",
     "name": "Sci-fi",
     "redirectTo": "/categorias"
+  },
+  {
+    "icon": "code-slash-outline",
+    "name": "Informática",
+    "redirectTo": "/categorias"
   }
 ]

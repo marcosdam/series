@@ -22,7 +22,8 @@ const routes: Routes = [
   // CATEGORÍA
   //
   {
-    path: 'categoria',
+    path: 'serie/categorias/:cat',
+    // component: SerieComponent
     loadChildren: () => import('./home/paginas/categoria/categoria.module').then(m => m.CategoriaPageModule)
   },
 ];

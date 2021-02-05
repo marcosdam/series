@@ -6,15 +6,12 @@
             <!-- Slides en el header de la card -->
             <ion-card-header>
                 <ion-slides pager="true">
-                    <ion-slide>
-                        <img [src]="serie.imagen1" class="card-img-top">
+
+                    <ion-slide *ngFor="let imagen of serie.imagenes">
+                        <img [src]="imagen" class="card-img-top">
                     </ion-slide>
-                    <ion-slide>
-                        <img [src]="serie.imagen2" class="card-img-top">
-                    </ion-slide>
-                    <ion-slide>
-                        <img [src]="serie.imagen3" class="card-img-top">
-                    </ion-slide>
+
+
                 </ion-slides>
             </ion-card-header>
             <!-- Título Serie -->
@@ -34,12 +31,12 @@
                 <br>
                 <ion-label>Sinopsis: {{serie.sinopsis}}</ion-label>
                 <br>
-                <ion-badge>Puntuación: {{serie.puntuaciones}} </ion-badge>  <!-- Mostrar la media -->
+                <ion-badge>Puntuación: {{media}} </ion-badge>  <!-- Mostrar la media -->
             </ion-card-content>
 
             <!-- FORM PARA PUNTUAR SERIE (EMAIL Y NOTA) -->
             <!-- Tiene que añadir email y nota al objeto puntuación y meter el objeto en la lista de puntuaciones de la serie -->
-            <form #puntuacionForm (ngSubmit)="addPuntuacion(datosService.selectedSerie, puntuacionForm)">
+            <form #puntuacionForm="ngForm" (ngSubmit)="enviarFormulario(serie, puntuacionForm)">
 
                 <ion-card>
                     <ion-card-header>¿Ya has visto esta serie? ¡Puntúala!</ion-card-header>
@@ -49,15 +46,18 @@
                             <input type="email" name="email" #email="ngModel"
                                    [(ngModel)]="puntuacion.email" placeholder="Introduce un email válido para poder votar"
                                    required pattern="^([a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" />
-
-                            <ion-button class="btn btn-primary" (click)="addPuntuacion()">Votar</ion-button>
+                            <!-- Activar BTN cuando el email sea válido -->
+                            <ion-button type="submit" expand="full" [disabled]="puntuacionForm.invalid"
+                                        class="btn btn-success">
+                                Votar
+                            </ion-button>
                         </ion-item>
                     </ion-card-subtitle>
 
                     <ion-card-subtitle>
                         <ion-item>
 
-                            <ion-range (ionChange)="cambiarRango($event)"
+                            <ion-range
                                        name="nota" #nota="ngModel" [(ngModel)]="puntuacion.nota"
                                        pin="true" snaps="true" ticks="true" min="1" max="10" color="primary" step="1" >
                                 <ion-label slot="start">1</ion-label>

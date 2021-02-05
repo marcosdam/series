@@ -10,7 +10,7 @@
         <ion-card *ngFor="let serie of series | async" [routerLink]="['/serie/', serie._id]">
             <!-- Añadir *ngIf para ordenar por más recientes (anyoEmision) -->
             <ion-card-header>
-                <ion-img [src]="serie.imagen1" class="card-img-top"></ion-img>
+                <ion-img [src]="serie.imagenes[0]" class="card-img-top"></ion-img>
             </ion-card-header>
 
             <ion-card-title>
@@ -34,8 +34,8 @@
     inicialmente 4 y al bajar el usuario se cargarán más series con un infinite scroll -->
 
     <!-- Infinite Scroll (cuando el usr esté a 150px de llegar al fin de la página, cargará el infinite)-->
-  <!--   <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
+     <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
         <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando..."></ion-infinite-scroll-content>
     </ion-infinite-scroll>
-    -->
+
 </ion-content>
